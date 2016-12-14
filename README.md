@@ -23,8 +23,9 @@ distributable is suitable for running in chroot environment.
     $ ./build.sh
     ```
 
-2. Edit `start_acestream.sh` according to your needs.
+2. Edit `dist/start_acestream.sh` according to your needs.
 3. Run AceStream engine.
     ```bash
+    $ cd dist
     $ ./start_acestream.sh
     ```
