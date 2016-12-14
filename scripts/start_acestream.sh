@@ -34,6 +34,11 @@ if [ ! -x "$ACEADDON/$ACECHROOT/system/data/data/org.acestream.engine/files/pyth
   echo "Some files is not executable (/bin/python). Exiting"
   exit 1
 fi
+
+ln -s /usr/share/zoneinfo/ $ACEADDON/$ACECHROOT/usr/share/zoneinfo
  
-$PERMISSION $SYSNSPAWN $ACEADDON/$ACECHROOT /system/bin/sh -c \
-  "cd /system/data/data/org.acestream.engine/files ; /system/bin/acestream.sh" > $ACEADDON/acestream.log
+$PERMISSION $SYSNSPAWN --register=no -D $ACEADDON/$ACECHROOT \
+  --chdir=/system/data/data/org.acestream.engine/files/ \
+  /system/bin/sh /system/bin/acestream.sh \
+  --log-debug 0 --check-live-pos-interval 5 --core-skip-have-before-playback-pos 1 \
+  --webrtc-allow-outgoing-connections 1 > $ACEADDON/acestream.log
