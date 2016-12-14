@@ -1,0 +1,74 @@
+From 92f9102f4c52471cfea078e3f4006124a9e29227 Mon Sep 17 00:00:00 2001
+From: Vasiliy Solovey <miltador@yandex.ua>
+Date: Wed, 14 Dec 2016 09:51:37 +0200
+Subject: [PATCH] Fix android.py
+
+---
+ android.py | 53 ++++++++++++++++++++++-------------------------------
+ 1 file changed, 22 insertions(+), 31 deletions(-)
+
+diff --git a/android.py b/android.py
+index 9997e31..ea20922 100644
+--- a/android.py
++++ b/android.py
+@@ -25,35 +25,26 @@ HOST = os.environ.get('AP_HOST')
+ HANDSHAKE = os.environ.get('AP_HANDSHAKE')
+ Result = collections.namedtuple('Result', 'id,result,error')
+ 
+-
+ class Android(object):
+-
+-  def __init__(self, addr=None):
+-    if addr is None:
+-      addr = HOST, PORT
+-    self.conn = socket.create_connection(addr)
+-    self.client = self.conn.makefile()
+-    self.id = 0
+-    if HANDSHAKE is not None:
+-      self._authenticate(HANDSHAKE)
+-
+-  def _rpc(self, method, *args):
+-    data = {'id': self.id,
+-            'method': method,
+-            'params': args}
+-    request = json.dumps(data)
+-    self.client.write(request+'\n')
+-    self.client.flush()
+-    response = self.client.readline()
+-    self.id += 1
+-    result = json.loads(response)
+-    if result['error'] is not None:
+-      print result['error']
+-    # namedtuple doesn't work with unicode keys.
+-    # return Result(id=result['id'], result=result['result'], error=result['error'], )
+-    return result['result']
+-
+-  def __getattr__(self, name):
+-    def rpc_call(*args):
+-      return self._rpc(name, *args)
+-    return rpc_call
++  def __init__(self,addr=None):
++    pass
++
++  @staticmethod
++  def getAceStreamHome():
++    return os.path.abspath(os.path.dirname(sys.argv[0]))
++            
++  @staticmethod
++  def makeToast(msg):
++    print msg
++  
++  @staticmethod
++  def getDeviceName():
++    return "Linux ARMv7 Generic Device"
++
++  @staticmethod
++  def getDeviceModel():
++    return str(os.uname())
++
++  @staticmethod
++  def getDeviceProductName():
++    return "Linux ARMv7 Generic"
+-- 
+2.9.3
+
