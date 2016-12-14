@@ -2,9 +2,10 @@
 
 # Written by Vasiliy Solovey, 2016
 
+ARCH=$1
 BUILD_DIR="build_dir"
 DIST_DIR="dist"
-LATEST_ANDROID_ENGINE_URI="http://dl.acestream.org/products/acestream-engine/android/armv7/latest"
+LATEST_ANDROID_ENGINE_URI="http://dl.acestream.org/products/acestream-engine/android/$1/latest"
 
 echo "Cleaning up..."
 rm -r $BUILD_DIR
@@ -14,7 +15,7 @@ mkdir $BUILD_DIR
 cd $BUILD_DIR
 
 echo "Downloading latest AceStream engine for Android..."
-wget $LATEST_ANDROID_ENGINE_URI -q -O acestream.apk
+wget $LATEST_ANDROID_ENGINE_URI -O acestream.apk
 
 echo "Unpacking..."
 unzip -q acestream.apk -d acestream_bundle
@@ -26,18 +27,24 @@ unzip -q acestream_bundle/res/raw/public_res.zip -d acestream_engine
 
 echo "Patching Python..."
 unzip -q acestream_engine/python/lib/python27.zip -d python27
-patch python27/android.py < ../patches/python27/001-android.py-missing-methods.patch
+cp -f ../mods/python27/android.py python27/
 
 echo "Patching AceStream engine..."
-patch acestream_engine/main.py < ../patches/acestreamengine/001-main.py.patch
+cp -f ../mods/acestreamengine/main.py acestream_engine/
 chmod +x acestream_engine/python/bin/python
 
 echo "Bundling Python..."
-zip -q -r python27.zip python27/*
-mv -f python27.zip acestream_engine/python/lib/
+cd python27
+zip -q -r python27.zip *
+mv -f python27.zip ../acestream_engine/python/lib/
+cd ..
 
 echo "Making distributable..."
-mkdir ../$DIST_DIR
-cp -R ../androidfs/ ../$DIST_DIR/
-cp ../scripts/*.sh ../$DIST_DIR/
-mv acestream_engine/* ../$DIST_DIR/androidfs/system/data/data/org.acestream.engine/files/
+cd ..
+mkdir $DIST_DIR
+mkdir $DIST_DIR/androidfs
+cp -r chroot/* $DIST_DIR/androidfs/
+cp -r -f platform/$1/* $DIST_DIR/androidfs/
+cp scripts/*.sh $DIST_DIR/
+mv $BUILD_DIR/acestream_engine/* $DIST_DIR/androidfs/system/data/data/org.acestream.media/files/
+echo "Done!"

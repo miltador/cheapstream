@@ -30,7 +30,7 @@ if [ ! -x "$ACEADDON/$ACECHROOT/system/bin/sh" ]; then
   exit 1
 fi
 
-if [ ! -x "$ACEADDON/$ACECHROOT/system/data/data/org.acestream.engine/files/python/bin/python" ]; then
+if [ ! -x "$ACEADDON/$ACECHROOT/system/data/data/org.acestream.media/files/python/bin/python" ]; then
   echo "Some files is not executable (/bin/python). Exiting"
   exit 1
 fi
