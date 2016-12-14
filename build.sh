@@ -47,4 +47,5 @@ cp -r chroot/* $DIST_DIR/androidfs/
 cp -r -f platform/$1/* $DIST_DIR/androidfs/
 cp scripts/*.sh $DIST_DIR/
 mv $BUILD_DIR/acestream_engine/* $DIST_DIR/androidfs/system/data/data/org.acestream.media/files/
+
 echo "Done!"
