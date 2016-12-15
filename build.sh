@@ -3,6 +3,13 @@
 # Written by Vasiliy Solovey, 2016
 
 ARCH=$1
+ARCH_EXT=$ARCH
+if [ "$ARCH_EXT" == "armv7" ]; then
+  ARCH_EXT="armeabiv7a"
+fi
+
+echo $ARCH_EXT
+
 BUILD_DIR="build_dir"
 DIST_DIR="dist"
 LATEST_ANDROID_ENGINE_URI="http://dl.acestream.org/products/acestream-engine/android/$1/latest"
@@ -21,8 +28,8 @@ echo "Unpacking..."
 unzip -q acestream.apk -d acestream_bundle
 
 echo "Extracting resources..."
-unzip -q acestream_bundle/res/raw/armeabiv7a_private_py.zip -d acestream_engine
-unzip -q acestream_bundle/res/raw/armeabiv7a_private_res.zip -d acestream_engine
+unzip -q acestream_bundle/res/raw/"$ARCH_EXT"_private_py.zip -d acestream_engine
+unzip -q acestream_bundle/res/raw/"$ARCH_EXT"_private_res.zip -d acestream_engine
 unzip -q acestream_bundle/res/raw/public_res.zip -d acestream_engine
 
 echo "Patching Python..."
@@ -46,6 +53,6 @@ mkdir $DIST_DIR/androidfs
 cp -r chroot/* $DIST_DIR/androidfs/
 cp -r -f platform/$1/* $DIST_DIR/androidfs/
 cp scripts/*.sh $DIST_DIR/
-mv $BUILD_DIR/acestream_engine/* $DIST_DIR/androidfs/system/data/data/org.acestream.media/files/
+mv $BUILD_DIR/acestream_engine/* $DIST_DIR/androidfs/data/data/org.acestream.media/files/
 
 echo "Done!"
