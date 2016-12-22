@@ -25,7 +25,7 @@ if [ -z "$SYSNSPAWN" ]; then
   exit 1
 fi
 
-if [ ! -x "$ACEADDON/$ACECHROOT/bin/sh" ]; then
+if [ ! -x "$ACEADDON/$ACECHROOT/system/bin/sh" ]; then
   echo "Some files are not executable (/bin/sh). Exiting"
   exit 1
 fi
@@ -37,7 +37,7 @@ fi
 
 $PERMISSION $SYSNSPAWN --register=no \
   -D $ACEADDON/$ACECHROOT \
-  sh acestream.sh \
+  /system/bin/sh /system/bin/acestream.sh \
   --log-debug 0 \
   --log-modules root:I \
   --check-live-pos-interval 5 \
