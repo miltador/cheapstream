@@ -1,6 +1,7 @@
 #!/system/bin/sh
 
 export ANDROID_ROOT=/storage/emulated/0
+export ANDROID_DATA=/data
 export PYTHONHOME=/data/data/org.acestream.media/files/python
 export PYTHONPATH=/data/data/org.acestream.media/files/python/lib/python2.7/lib-dynload:/data/data/org.acestream.media/files/python/lib/python2.7
 export PATH=$PYTHONHOME/bin:$PATH
