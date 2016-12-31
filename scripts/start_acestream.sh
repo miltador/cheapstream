@@ -37,8 +37,8 @@ fi
 
 ACE_ARG="--client-console"
 
-if [ -f $ACE_DIR/acestream-user.conf ]; then
-  . $ACE_DIR/acestream-user.conf
+if [ -f $ACEADDON/acestream-user.conf ]; then
+  . $ACEADDON/acestream-user.conf
   if [ -n "$ACE_USER_ARG" ]; then
     ACE_ARG="$ACE_ARG $ACE_USER_ARG"
   fi
