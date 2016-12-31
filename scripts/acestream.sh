@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-export ANDROID_ROOT=/storage
+export ANDROID_ROOT=/system
 export ANDROID_DATA=/data
 export ANDROID_STORAGE=/storage
 export PYTHONHOME=/data/data/org.acestream.media/files/python
