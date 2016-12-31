@@ -1,23 +1,7 @@
-# Copyright (C) 2009 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License"); you may not
-# use this file except in compliance with the License. You may obtain a copy of
-# the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-# License for the specific language governing permissions and limitations under
-# the License.
-
-__author__ = 'Damon Kohler <damonkohler@gmail.com>'
+__author__ = 'Vasiliy Solovey <miltador@yandex.ua>'
 
 import collections
-import json
 import os
-import socket
 import sys
 
 from psutil import virtual_memory
@@ -40,7 +24,7 @@ class Android(object):
   @staticmethod
   # path to store logs and .ACEStream ?
   def getAceStreamHome():
-    return '/storage/emulated/0/org.acestream.engine'
+    return os.path.abspath(os.path.dirname(sys.argv[0]))
 
   @staticmethod
   def getDisplayLanguage():
@@ -99,3 +83,8 @@ class Android(object):
   # deprecated?
   def getDeviceProductName():
     return "Linux Generic"
+
+  @staticmethod
+  # stub
+  def onEPGUpdated():
+    pass

@@ -34,10 +34,10 @@ unzip -q acestream_bundle/res/raw/public_res.zip -d acestream_engine
 
 echo "Patching Python..."
 unzip -q acestream_engine/python/lib/python27.zip -d python27
-cp -f ../mods/python27/android.py python27/
+cp -r -f ../mods/python27/* python27/
 
 echo "Patching AceStream engine..."
-cp -f ../mods/acestreamengine/main.py acestream_engine/
+cp -f ../mods/acestreamengine/* acestream_engine/
 chmod +x acestream_engine/python/bin/python
 
 echo "Bundling Python..."
@@ -52,7 +52,9 @@ mkdir $DIST_DIR
 mkdir $DIST_DIR/androidfs
 cp -r chroot/* $DIST_DIR/androidfs/
 cp -r -f platform/$1/* $DIST_DIR/androidfs/
-cp scripts/*.sh $DIST_DIR/
+cp scripts/start_acestream.sh $DIST_DIR/
+cp scripts/acestream-user.conf $DIST_DIR/
+cp scripts/acestream.sh $DIST_DIR/androidfs/system/bin/
 mv $BUILD_DIR/acestream_engine/* $DIST_DIR/androidfs/data/data/org.acestream.media/files/
 
 echo "Done!"

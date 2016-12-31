@@ -35,11 +35,15 @@ if [ ! -x "$ACEADDON/$ACECHROOT/data/data/org.acestream.media/files/python/bin/p
   exit 1
 fi
 
+ACE_ARG="--client-console"
+
+if [ -f $ACE_DIR/acestream-user.conf ]; then
+  . $ACE_DIR/acestream-user.conf
+  if [ -n "$ACE_USER_ARG" ]; then
+    ACE_ARG="$ACE_ARG $ACE_USER_ARG"
+  fi
+fi
+
 $PERMISSION $SYSNSPAWN --register=no \
   -D $ACEADDON/$ACECHROOT \
-  /system/bin/sh /system/bin/acestream.sh \
-  --log-debug 0 \
-  --log-modules root:I \
-  --check-live-pos-interval 5 \
-  --core-skip-have-before-playback-pos 1 \
-  --webrtc-allow-outgoing-connections 1 > $ACEADDON/acestream.log
+  /system/bin/sh /system/bin/acestream.sh $ACE_ARG
