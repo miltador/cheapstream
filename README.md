@@ -9,7 +9,7 @@ distributable is suitable for running in chroot environment.
 
 ## Requirements
 
-  - ARMv7 or newer CPU
+  - ARMv7+ CPU
   - systemd-enabled Linux distribution
   - systemd-nspawn for running AceStream engine in chroot-ed environment
 
@@ -20,7 +20,7 @@ distributable is suitable for running in chroot environment.
     ```bash
     $ git clone https://github.com/miltador/cheapstream
     $ cd cheapstream
-    $ ./build.sh
+    $ ./build.sh [arm|x86]
     ```
 
 2. Edit `dist/start_acestream.sh` according to your needs.

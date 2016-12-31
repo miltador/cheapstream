@@ -3,6 +3,10 @@
 # Written by Vasiliy Solovey, 2016
 
 ARCH=$1
+if [ "$ARCH" == "arm" ]; then
+  ARCH="armv7"
+fi
+
 ARCH_EXT=$ARCH
 if [ "$ARCH_EXT" == "armv7" ]; then
   ARCH_EXT="armeabiv7a"
@@ -12,7 +16,7 @@ echo $ARCH_EXT
 
 BUILD_DIR="build_dir"
 DIST_DIR="dist"
-LATEST_ANDROID_ENGINE_URI="http://dl.acestream.org/products/acestream-engine/android/$1/latest"
+LATEST_ANDROID_ENGINE_URI="http://dl.acestream.org/products/acestream-engine/android/$ARCH/latest"
 
 echo "Cleaning up..."
 rm -r $BUILD_DIR
