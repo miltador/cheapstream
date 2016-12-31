@@ -34,6 +34,7 @@ distributable is suitable for running in chroot environment.
 ## TODO
 
   - Make x86 port usable (probably need to find perfect donor)
+  - Revise and complete android.py RPC responses emulation
   - Set timezone for systemd container properly
   - Pack dnspython lib (`mods/python27/dns`) into an egg
   - etc... Open issues if you have any idea!
