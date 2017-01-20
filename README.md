@@ -9,7 +9,7 @@ distributable is suitable for running in chroot environment.
 
 ## Requirements
 
-  - ARMv7+ CPU
+  - ARMv7+/x86 CPU
   - systemd-enabled Linux distribution
   - systemd-nspawn for running AceStream engine in chroot-ed environment
 
@@ -41,4 +41,6 @@ distributable is suitable for running in chroot environment.
 
 ## Thanks
 
-Special thanks to those people who made it possible by providing first ports.
+Special thanks to [Pepsik](http://mytalks.ru/index.php?action=profile;u=27164) for providing full set of arm libs and improved starting script.
+
+Also thanks to those people who made it possible by providing first ports.
