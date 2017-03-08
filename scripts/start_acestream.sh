@@ -46,4 +46,4 @@ fi
 
 $PERMISSION $SYSNSPAWN --register=no \
   -D $ACEADDON/$ACECHROOT \
-  /system/bin/sh /system/bin/acestream.sh $ACE_ARG
+  /system/bin/sh /system/bin/acestream.sh $ACE_ARG > $ACEADDON/acestream.log 2>&1
