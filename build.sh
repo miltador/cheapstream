@@ -25,18 +25,23 @@ rm -r $DIST_DIR
 mkdir $BUILD_DIR
 cd $BUILD_DIR
 
+pwd
+
 echo "Downloading latest AceStream engine for Android..."
 wget $LATEST_ANDROID_ENGINE_URI -O acestream.apk
 
 echo "Unpacking..."
+mkdir acestream_bundle
 unzip -q acestream.apk -d acestream_bundle
 
 echo "Extracting resources..."
+mkdir acestream_engine
 unzip -q acestream_bundle/res/raw/"$ARCH_EXT"_private_py.zip -d acestream_engine
 unzip -q acestream_bundle/res/raw/"$ARCH_EXT"_private_res.zip -d acestream_engine
 unzip -q acestream_bundle/res/raw/public_res.zip -d acestream_engine
 
 echo "Patching Python..."
+mkdir python27
 unzip -q acestream_engine/python/lib/python27.zip -d python27
 cp -r -f ../mods/python27/* python27/
 
