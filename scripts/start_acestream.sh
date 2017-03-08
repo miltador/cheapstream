@@ -8,7 +8,7 @@ SYSNSPAWN=""
 
 if [ $(id -u) != 0 ]; then
   PERMISSION=$(which sudo)
-  if [ -x "$PERMISSION" ]; then
+  if [ ! -x "$PERMISSION" ]; then
     echo "Without sudo and not a root. Exiting."
     exit 1
   fi
