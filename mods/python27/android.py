@@ -88,3 +88,23 @@ class Android(object):
   # stub
   def onEPGUpdated():
     pass
+
+  @staticmethod
+  def getAppId(*args, **kwargs):
+    return 1
+
+  @staticmethod
+  def getAppVersionCode(*args, **kwargs):
+    return 1
+
+  @staticmethod
+  def onEvent(*args, **kwargs):
+    return 1
+
+  @staticmethod
+  def getRAMSize(*args, **kwargs):
+      return 512 * 1024 * 1024
+  
+  @staticmethod
+  def getDeviceManufacturer(*args, **kwargs):
+      return "Samsung"
