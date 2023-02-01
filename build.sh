@@ -9,7 +9,7 @@ fi
 
 ARCH_EXT=$ARCH
 if [ "$ARCH_EXT" == "armv7" ]; then
-  ARCH_EXT="armeabiv7a"
+  ARCH_EXT="armeabi-v7a"
 fi
 
 echo $ARCH_EXT
@@ -36,9 +36,9 @@ unzip -q acestream.apk -d acestream_bundle
 
 echo "Extracting resources..."
 mkdir acestream_engine
-unzip -q acestream_bundle/res/raw/"$ARCH_EXT"_private_py.zip -d acestream_engine
-unzip -q acestream_bundle/res/raw/"$ARCH_EXT"_private_res.zip -d acestream_engine
-unzip -q acestream_bundle/res/raw/public_res.zip -d acestream_engine
+unzip -q acestream_bundle/assets/engine/"$ARCH_EXT"_private_py.zip -d acestream_engine
+unzip -q acestream_bundle/assets/engine/"$ARCH_EXT"_private_res.zip -d acestream_engine
+unzip -q acestream_bundle/assets/engine/public_res.zip -d acestream_engine
 
 echo "Patching Python..."
 mkdir python27
