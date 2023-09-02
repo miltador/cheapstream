@@ -61,9 +61,7 @@ mkdir $DIST_DIR
 mkdir $DIST_DIR/androidfs
 cp -r chroot/* $DIST_DIR/androidfs/
 cp -r -f platform/$1/* $DIST_DIR/androidfs/
-cp scripts/start_acestream.sh $DIST_DIR/
-cp scripts/stop_acestream.sh $DIST_DIR/
-cp scripts/acestream-user.conf $DIST_DIR/
+cp scripts/acestreamengine $DIST_DIR/
 cp scripts/acestream.sh $DIST_DIR/androidfs/system/bin/
 mv $BUILD_DIR/acestream_engine/* $DIST_DIR/androidfs/data/data/org.acestream.media/files/
 

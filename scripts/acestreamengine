@@ -35,15 +35,6 @@ if [ ! -x "$ACEADDON/$ACECHROOT/data/data/org.acestream.media/files/python/bin/p
   exit 1
 fi
 
-ACE_ARG="--client-console"
-
-if [ -f $ACEADDON/acestream-user.conf ]; then
-  . $ACEADDON/acestream-user.conf
-  if [ -n "$ACE_USER_ARG" ]; then
-    ACE_ARG="$ACE_ARG $ACE_USER_ARG"
-  fi
-fi
-
 $PERMISSION $SYSNSPAWN --register=no \
   -D $ACEADDON/$ACECHROOT \
-  /system/bin/sh /system/bin/acestream.sh $ACE_ARG > $ACEADDON/acestream.log 2>&1
+  /system/bin/sh /system/bin/acestream.sh $@
